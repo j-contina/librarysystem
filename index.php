@@ -6,192 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Library System</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-    <style>
-    /* General navbar styling */
-    .navbar {
-        background-color: #ffffff;
-        padding: 0.5rem 1rem;
-    }
-
-    .navbar-logo {
-        height: 40px;
-        width: auto;
-    }
-
-    .navbar-nav {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .nav-link {
-        color: #333;
-        font-size: 16px;
-        font-weight: 500;
-        transition: color 0.3s ease, background-color 0.3s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus {
-        color: #007bff;
-        background-color: #f8f9fa;
-        border-radius: 0.25rem;
-    }
-
-    .navbar-toggler {
-        border: none;
-    }
-
-    .navbar-toggler-icon {
-        background-image: url('data:image/svg+xml;base64,...');
-        /* Use your own icon if needed */
-    }
-
-    /* Additional styling for responsiveness and shadow */
-    .navbar-light .navbar-nav .nav-link {
-        padding: 0.5rem 1rem;
-    }
-
-    .navbar-light .navbar-nav .nav-item {
-        margin: 0;
-    }
-
-    .shadow-sm {
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    }
-
-    /* Books Styling */
-    .card {
-        height: 100%;
-    }
-
-    .card-img-top {
-        height: 300px;
-        /* Adjust to your preference */
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .card-body {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card-title {
-        flex-grow: 1;
-        /* Ensures the title takes up space */
-    }
-
-    .card-text {
-        margin-top: auto;
-        /* Pushes the price to the bottom */
-    }
-
-    .card {
-        border-radius: 10px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-img-top {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        object-fit: cover;
-        height: 250px;
-    }
-
-    h2 {
-        color: #333;
-        font-weight: bold;
-    }
-
-    .fw-bold {
-        font-weight: 600;
-    }
-
-    .bg-light {
-        background-color: #f8f9fa !important;
-    }
-
-    .hover-effect {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-    }
-
-    .hover-effect:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .shadow-sm {
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .text-primary {
-        color: #007bff !important;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    footer h5 {
-        color: #f8f9fa;
-        font-weight: bold;
-    }
-
-    footer ul li a {
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    footer ul li a:hover {
-        color: #007bff;
-    }
-
-    footer form .form-control {
-        border-radius: 0;
-    }
-
-    footer form .btn-primary {
-        border-radius: 0;
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-    footer form .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    .social-icons a {
-        font-size: 1.5rem;
-        transition: color 0.3s ease;
-    }
-
-    .social-icons a:hover {
-        color: #007bff;
-    }
-
-    .bg-dark {
-        background-color: #343a40 !important;
-    }
-
-    .text-light {
-        color: #f8f9fa !important;
-    }
-    </style>
 </head>
 
 <body>
@@ -223,7 +39,6 @@ session_start();
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <!--<a class="navbar-brand" href="#"><img src="library-logo.png" alt="Library Logo" class="navbar-logo"></a>-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -237,13 +52,13 @@ session_start();
                         <a class="nav-link" href="books.php">Books</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact
+                            Us</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 
     <!-- Carousel Section -->
     <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel"
@@ -288,46 +103,49 @@ session_start();
     <!-- Trending Books Section -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="mb-4 text-center">Trending Books</h2>
+            <h2 class="mb-4 display-5 text-dark">Trending Books</h2>
             <div class="row g-4">
                 <!-- Example Book Card -->
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <img src="img/books/harrypotter.png" class="card-img-top img-fluid" alt="Harry Potter">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <!--ETO PALITAN OR LAGYAN NYO NA LANG PARA MAKITA NYO YUNG OUTPUT-->
+                        <img src="img/books/harrypotter.png" class="card-img-top img-fluid rounded" alt="Harry Potter">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Harry Potter</h5>
-                            <p class="card-text mt-auto fw-bold">$9.99</p>
+                            <h5 class="card-title text-center text-primary">Harry Potter</h5>
+                            <p class="card-text text-center mt-auto fw-bold text-muted">$9.99</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <img src="img/books/city on the edge.jpg" class="card-img-top img-fluid" alt="City on the Edge">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="img/books/city on the edge.jpg" class="card-img-top img-fluid rounded"
+                            alt="City on the Edge">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">City on the Edge</h5>
-                            <p class="card-text mt-auto fw-bold">$9.99</p>
+                            <h5 class="card-title text-center text-primary">City on the Edge</h5>
+                            <p class="card-text text-center mt-auto fw-bold text-muted">$9.99</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <img src="img/books/dont look back.png" class="card-img-top img-fluid" alt="Don't Look Back">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="img/books/dont look back.png" class="card-img-top img-fluid rounded"
+                            alt="Don't Look Back">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Don't Look Back</h5>
-                            <p class="card-text mt-auto fw-bold">$9.99</p>
+                            <h5 class="card-title text-center text-primary">Don't Look Back</h5>
+                            <p class="card-text text-center mt-auto fw-bold text-muted">$9.99</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <img src="img/books/the dress and the girl.jpg" class="card-img-top img-fluid"
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="img/books/the dress and the girl.jpg" class="card-img-top img-fluid rounded"
                             alt="The Dress and the Girl">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">The Dress and the Girl</h5>
-                            <p class="card-text mt-auto fw-bold">$9.99</p>
+                            <h5 class="card-title text-center text-primary">The Dress and the Girl</h5>
+                            <p class="card-text text-center mt-auto fw-bold text-muted">$9.99</p>
                         </div>
                     </div>
                 </div>
@@ -337,9 +155,7 @@ session_start();
         </div>
     </section>
 
-
-
-    <!-- Blog & Social Media Section -->
+    <!-- Blog & Social Media Section / PWEDE NYO RIN TONG PALITAN-->
     <section class="bg-light py-5">
         <div class="container">
             <div class="row g-4">
@@ -362,6 +178,71 @@ session_start();
             </div>
         </div>
     </section>
+
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div id="responseMessage" class="alert d-none mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <?php if (isset($_GET['contact_success'])): ?>
+                    <div class="alert alert-<?php echo $_GET['contact_success'] === 'true' ? 'success' : 'danger'; ?>"
+                        role="alert">
+                   <?php echo $_GET['contact_success'] === 'true' ? 'Thank you! Your message has been received.' : 'There was an error sending your message. Please try again.'; ?>
+                    </div>
+                    <?php endif; ?>
+                    <form action="send_message.php" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
 
     <!-- Footer -->
@@ -414,8 +295,39 @@ session_start();
         </div>
     </footer>
 
-
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+         document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch('send_message.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            var responseMessage = document.getElementById('responseMessage');
+            responseMessage.className = 'alert mt-3';
+            
+            if (data.status === 'success') {
+                responseMessage.classList.add('alert-success');
+                responseMessage.textContent = data.message;
+                document.getElementById('contactForm').reset();
+            } else {
+                responseMessage.classList.add('alert-danger');
+                responseMessage.textContent = data.message;
+            }
+
+            responseMessage.classList.remove('d-none');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
+    
 </body>
 
 </html>
