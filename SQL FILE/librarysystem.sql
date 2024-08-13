@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2024 at 02:31 PM
+-- Generation Time: Aug 13, 2024 at 04:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -24,46 +24,57 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `contact_messages`
 --
 
-CREATE TABLE `users` (
-  `stud_id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
+CREATE TABLE `contact_messages` (
+  `message_id` int(11) NOT NULL,
+  `stud_id` int(11) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `contact_messages`
 --
 
-INSERT INTO `users` (`stud_id`, `fname`, `lname`, `email`, `password`) VALUES
-(1, 'Joros', 'Contina', 'joros@gmail.com', '$2y$10$WPa6XVQJ/Ufv.liLNi51k.9Xq1dgBjMJKxddZbaobuMq67j6lr6pG'),
-(2, 'Jean', 'Valdez', 'valdezjean@gmail.com', '$2y$10$E5ITlnyGcOocbUgVM7AZ9e2O9StZOChA.vWjP0ByYSYR3rDUitQJi'),
-(4, 'Jean', 'Rose', 'jean@gmail.com', '$2y$10$9.ljXA5S9jPR.6DbWVLd3.2c4eCCosycQin/IyGeiaupWmtztdGua');
+INSERT INTO `contact_messages` (`message_id`, `stud_id`, `name`, `email`, `message`, `created_at`) VALUES
+(2, NULL, 'Jean Rose', 'jean@gmail.com', 'qwerty', '2024-08-13 01:58:56'),
+(4, NULL, 'Joros', 'joros@gmail.com', 'qwerty', '2024-08-13 02:04:24'),
+(7, NULL, 'Jean Rose', 'jean@gmail.com', 'hahahaha', '2024-08-13 02:10:07');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `contact_messages`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`stud_id`),
-  ADD UNIQUE KEY `email` (`email`);
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `stud_id` (`stud_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `contact_messages`
 --
-ALTER TABLE `users`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `contact_messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD CONSTRAINT `contact_messages_ibfk_1` FOREIGN KEY (`stud_id`) REFERENCES `users` (`stud_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
